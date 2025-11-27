@@ -96,7 +96,8 @@
                 <div class="col-12">
                     <h2 class="mb-5" id="tittlebanner"> MangaKuin </h2>
                     <p class="mb-5"> Encuentra tus mangas favoritos </p>
-                    <button id="boton" class="btn mt-5" style="background-color: rgb(233, 50, 163); color: aliceblue;"> Sale % </button>
+                    <button class="btn mt-5" style="background-color: rgb(233, 50, 163);
+                     color: aliceblue;" onclick="ofertas(); catalogo()" id="botonoferta"> Sale % </button>
 
                 </div>
             </div>
@@ -108,8 +109,8 @@
         <section>
         <h2 class="text-center text-white py-4">Catálogo</h2>
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 pb-4">
+            <div class="row todos" id="productos">
+                <div class="col-12 col-md-3 pb-4 producto" id="p1">
                     <div class="card" style="width: 100%;">
                         <img src="assets/images/doraemon.jpeg" card-img-top" alt="..." height="200px">
                         <div class="card-body">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 pb-4">
+                <div class="col-12 col-md-3 pb-4 producto" id="p2">
                     <div class="card" style="width: 100%;">
                         <img src="assets/images/jujutdu.jpeg" card-img-top" alt="..." height="200px">
                         <div class="card-body">
@@ -145,7 +146,7 @@
                     </div>
                 </div>
                
-                <div class="col-12 col-md-3 pb-4">
+                <div class="col-12 col-md-3 pb-4 producto" id="p3">
                     <div class="card" style="width: 100%;">
                         <img src="assets/images/shinkeki.jpeg"card-img-top" alt="..."  height="200px">
                         <div class="card-body">
@@ -163,7 +164,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 pb-4">
+                <div class="col-12 col-md-3 pb-4 producto" id="p4">
                     <div class="card" style="width: 100%;">
                         <img src="assets/images/totoro.jpeg"card-img-top" alt="..." height="200px">
                         <div class="card-body">
@@ -186,7 +187,17 @@
          
         
     </section>
- 
+
+    <footer class="text-white text-center py-4">
+            <div class="container fondofooter">
+                <p class="mb-1">
+                    ©MangaKuin. Todos los derechos reservados.
+                </p>
+                <p class="mb-1">
+                    Contáctanos para más información <i class="fa fa-phone-square" aria-hidden="true"></i>
+                </p>
+            </div>
+        </footer>
  
  
  

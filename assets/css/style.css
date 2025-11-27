@@ -33,3 +33,19 @@ nav {
     position: relative;
     transition: all 0.8s ease;
 }
+
+.item {
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+.oculto {
+    display: none !important;
+}
+
+.fondofooter{
+    background-color: lab(71.57% 46.1 -9.55 / 0.706);
+    padding-top: 0.3cm;
+    padding-bottom: 0.3cm;
+    opacity: 0,1;
+}
