@@ -143,4 +143,51 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
- 
+ //-- paágina detalles--
+
+ document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Datos de productos (Usamos rutas relativas desde la raíz, luego JS las ajustará si es necesario)
+    const products = [
+        { id: 1, name: 'Doraemon Volumen 1', price: 5000, image: '../assets/images/doraemon.jpeg', currency: 'CLP', description: 'Doraemon y Nobita se inscriben en un curso del SENCE.' },
+        { id: 2, name: 'Jujutsu Kaisen Vol 19', price: 4500, image: '../assets/images/jujutdu.jpeg', currency: 'CLP', description: 'Luego de la muerte de Satoru Gojo, Itadori decide buscar trabajo como programador.' },
+        { id: 3, name: 'Shingeki No Kyojin', price: 4500, image: '../assets/images/shinkeki.jpeg', currency: 'CLP', description: 'El Retumbar invoca titanes kawaii.' },
+        { id: 4, name: 'Totoro Edición Deluxe', price: 5000, image: '../assets/images/totoro.jpeg', currency: 'CLP', description: 'Totoro aprende a usar Github.' },
+        // Añade más productos aquí si es necesario
+    ];
+
+    // --- Lógica Específica para la Página de Detalle (detail.html) ---
+    if (document.getElementById('product-detail-container')) {
+        displayDetailPage();
+    }
+
+    function displayDetailPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(p => p.id == productId);
+
+        if (!product) {
+            document.getElementById('detail-name').textContent = "Producto no encontrado.";
+            return;
+        }
+
+        // Ajuste de ruta relativa para la imagen: 
+        // Eliminamos el "./" inicial de la ruta guardada ("./img/...")
+        // y añadimos "../" al principio para subir un nivel desde /pages/
+        const imagePath = "../" + product.image.substring(2); 
+
+        document.getElementById('detail-name').textContent = product.name;
+        document.getElementById('detail-image').src = imagePath;
+        document.getElementById('detail-description').textContent = product.description;
+        document.getElementById('detail-price-display').textContent = `Precio: CLP ${product.price}`;
+        document.getElementById('page-title').textContent = `Detalle ${product.name}`;
+
+        const addToCartBtn = document.getElementById('detail-add-to-cart-btn');
+        addToCartBtn.addEventListener('click', () => {
+            addToCart(product.id, product.name, product.price, product.image, product.currency);
+            alert(`"${product.name}" añadido al carrito.`);
+        });
+    }
+});
+
+
