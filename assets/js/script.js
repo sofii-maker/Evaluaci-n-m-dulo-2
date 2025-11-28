@@ -40,29 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleLike(productId, countElement) {
-
     let currentLikes = parseInt(countElement.textContent);
     currentLikes++;
-    countElement.textContent = currentLikes;
-
-    
+    countElement.textContent = currentLikes;   
 }
 
 //--Carrito de compra--
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Inicializar el carrito (usando localStorage para persistencia básica)
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
-    // Función para guardar el carrito en localStorage
     function saveCart() {
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
     }
 
-    // Función para añadir productos
     function addToCart(productId, name, price, image, currency) {
-        const cartItem = cart.find(item => item.id == productId); // Usamos == porque data-id es string
+        const cartItem = cart.find(item => item.id == productId); 
 
         if (cartItem) {
             cartItem.quantity++;
@@ -73,23 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartCount();
     }
 
-    
-
-    // Función para actualizar el contador del carrito en el header
-    function updateCartCount() {
-        const cartCountEl = document.getElementById('contadorcarrito');
-        if (cartCountEl) {
-             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-             cartCountEl.textContent = totalItems;
-        }
+function updateCartCount() {
+    const cartCountEl = document.getElementById('contadorcarrito');
+    if (cartCountEl) {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountEl.textContent = totalItems;
     }
+}
 
-    // --- Lógica Específica para la Página Principal (index.html) ---
-
-    // Buscamos todos los botones que tengan la clase 'add-to-cart-btn'
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-
-    // Les añadimos un "escuchador de eventos" a cada uno
     
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -101,17 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         addToCart(productId, name, price, image, currency);
         alert(`"${name}" añadido al carrito.`);
+        });
     });
-});
 
-    // --- Lógica para la Página del Carrito (si decides usar cart.html) ---
-    // (Pega aquí la función renderCartPage() y eventos de cart.html del ejemplo anterior si los usas)
     if (document.getElementById('cart-page-container')) {
         renderCartPage();
         document.getElementById('clear-cart').addEventListener('click', () => {
             cart = [];
             saveCart();
-            renderCartPage(); // Volver a renderizar para mostrar vacío
+            renderCartPage();
             updateCartCount();
         });
     }
@@ -139,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
        cartTotalEl.textContent = `${cart[0]?.currency || 'CLP'} ${total.toFixed(2)}`;
 }
 
-    // Inicialización al cargar la página
     updateCartCount();
 });
 
@@ -147,16 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
  document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Datos de productos (Usamos rutas relativas desde la raíz, luego JS las ajustará si es necesario)
     const products = [
         { id: 1, name: 'Doraemon Volumen 1', price: 5000, image: '../assets/images/doraemon.jpeg', currency: 'CLP', description: 'Doraemon y Nobita se inscriben en un curso del SENCE.' },
         { id: 2, name: 'Jujutsu Kaisen Vol 19', price: 4500, image: '../assets/images/jujutdu.jpeg', currency: 'CLP', description: 'Luego de la muerte de Satoru Gojo, Itadori decide buscar trabajo como programador.' },
         { id: 3, name: 'Shingeki No Kyojin', price: 4500, image: '../assets/images/shinkeki.jpeg', currency: 'CLP', description: 'El Retumbar invoca titanes kawaii.' },
         { id: 4, name: 'Totoro Edición Deluxe', price: 5000, image: '../assets/images/totoro.jpeg', currency: 'CLP', description: 'Totoro aprende a usar Github.' },
-        // Añade más productos aquí si es necesario
     ];
 
-    // --- Lógica Específica para la Página de Detalle (detail.html) ---
     if (document.getElementById('product-detail-container')) {
         displayDetailPage();
     }
@@ -171,9 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Ajuste de ruta relativa para la imagen: 
-        // Eliminamos el "./" inicial de la ruta guardada ("./img/...")
-        // y añadimos "../" al principio para subir un nivel desde /pages/
         const imagePath = "../" + product.image.substring(2); 
 
         document.getElementById('detail-name').textContent = product.name;

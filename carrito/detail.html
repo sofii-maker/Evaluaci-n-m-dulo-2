@@ -17,7 +17,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <title>Mi Carrito</title>
+        <title>Detalle Producto</title>
     </head>
     <body>
         <header>
@@ -90,17 +90,26 @@
             </nav>
         </header>
 
-         <main id="product-detail-container">
-        <!-- Estos elementos se rellenan con JS, pero las rutas de imagen usadas en JS deben ser relativas desde este archivo -->
-        <h2 id="detail-name"></h2>
-        <img src="" id="detail-image" alt="Imagen del Producto" style="max-width: 400px;">
-        <p id="detail-description">Cargando descripción...</p>
-        <p id="detail-price-display"></p>
-        <button class="add-to-cart-btn">Añadir al Carrito</button>
-    </main>
+        <main id="product-detail-container">
+            <h2 id="detail-name"></h2>
+            <img src="" id="detail-image" alt="Imagen del Producto" style="max-width: 400px;">
+            <p id="detail-description">Cargando descripción...</p>
+            <p id="detail-price-display"></p>
+            <button class="add-to-cart-btn">Añadir al Carrito</button>
+        </main>
 
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <footer class="text-white text-center py-4">
+            <div class="container fondofooter">
+                <p class="mb-1">
+                    ©MangaKuin. Todos los derechos reservados.
+                </p>
+                <p class="mb-1">
+                    Contáctanos para más información <i class="fa fa-phone-square" aria-hidden="true"></i>
+                </p>
+            </div>
+        </footer>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/script.js"></script>   
-</body>
+    </body>
 </html>
